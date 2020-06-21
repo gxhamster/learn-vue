@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css">
     <title>Product App</title>
 </head>
 <body>
@@ -11,10 +12,20 @@
         
         <div class="product">
             <div class="product-image">
-                <img src="" alt="">
+                <img v-bind:src="image" alt="description" widht="200px" height="200px">
             </div>
 
-            <h1>{{ product }}</h1>
+            <div class="product-info">
+                <h1>{{ product }}</h1>
+                <a v-bind:href="link">{{ link }}</a>
+            </div>
+
+            <div class="product-stock">
+                <h3 v-if="inventory > 10">In Stock</h3>
+                <h3 v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out</h3>
+                <h3 v-else>Out of Stock</h3>
+                <h4 v-show="inStock">Available</h4>
+            </div>
         </div>
         
     </div>
