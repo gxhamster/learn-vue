@@ -18,14 +18,17 @@
             <div class="product-info">
                 <h1>{{ product }}</h1>
                 <a v-bind:href="link">{{ link }}</a>
+                <div class="product-stock">
+                    <h3 v-if="inventory > 10">In Stock</h3>
+                    <h3 v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out</h3>
+                    <h3 v-else>Out of Stock</h3>
+                    <span v-show="onSale">On Sale!!!!</span>
+                    <ul v-for="item in items">{{ item.name }} -- {{ item.color }}</ul>
+                    <li v-for="item in items">{{ item.size }}</li>
+                </div>
             </div>
 
-            <div class="product-stock">
-                <h3 v-if="inventory > 10">In Stock</h3>
-                <h3 v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out</h3>
-                <h3 v-else>Out of Stock</h3>
-                <h4 v-show="inStock">Available</h4>
-            </div>
+            
         </div>
         
     </div>
