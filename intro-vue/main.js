@@ -1,8 +1,11 @@
-var app = new Vue(
+count = 0;
+
+const app = new Vue(
     {
         el: '#app',
         data: {
             product: 'Socks',
+            images: ['./vmSocks-green-onWhite.jpg', './vmSocks-blue-onWhite.jpg'],
             image: './vmSocks-green-onWhite.jpg',
             description: 'A pair of fuzzy',
             link: "https://github.com/gxhamster/learn-vue",
@@ -31,7 +34,19 @@ var app = new Vue(
                 },
 
             ],
-            onSale: false
+            onSale: false,
+            cart: 0
+        },
+        methods: {
+            addToCart() {
+                this.cart += 1
+            },
+
+            changeImage() {
+                count++;
+                let index = count % this.images.length;
+                this.image = this.images[index];
+            }
         }
     }
 )
