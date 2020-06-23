@@ -13,7 +13,6 @@
         <div class="product">
             <div class="product-image">
                 <img v-bind:src="image" alt="description" widht="200px" height="200px">
-                <button v-on:click="changeImage">Next</button>
             </div>
 
             <div class="product-info">
@@ -24,11 +23,18 @@
                     <h3 v-else-if="inventory <= 10 && inventory > 0">Almost Sold Out</h3>
                     <h3 v-else>Out of Stock</h3>
                     <span v-show="onSale">On Sale!!!!</span>
-                    <ul v-for="item in items">{{ item.name }} -- {{ item.color }}</ul>
+
+                    <div class="color-box" 
+                        v-for="item in items" 
+                        :style="{ backgroundColor: item.color }"
+                        @mouseover="changeImage(item.image)">
+                    </div>
+                </div>
 
                 </div>
             </div>
 
+            <!-- Add to Cart -->
             <div class="cart">
                 <p>Cart({{ cart }})</p>
                 <button v-on:click="addToCart">Add To Cart</button>
